@@ -1,0 +1,27 @@
+# The Default Application Configuration
+---
+
+# The applications root directory. This is set by the start command.
+# Changing this value will have no effect.
+root: "./"
+
+# The port to use for the application. Can be overriden by the start command.
+port: 3000
+
+# The middleware to use and the order it should be loaded in.
+middleware:
+    - logger
+    - static
+    - yui
+    - query
+    - contextualizer
+    - router
+    # - bodyParser # this is done in an addon
+    # - cookieParser # this is done in an addon
+    - dispatcher
+
+# The configuration object that is passed to YUI()
+yui:
+    debug: true
+    bootstrap: false
+    base: "./yui/"

@@ -1,0 +1,44 @@
+{
+    "name": "mojitos",
+    "version": "0.6.0",
+    "description": "Mojitos provides an architecture developers to build runtime agnostic web applications.",
+    "preferGlobal": true,
+    "author": "Ric Allinson <allinson@yahoo-inc.com>",
+    "contributors": [],
+    "dependencies": {
+        "commander": "*",
+        "connect": "*",
+        "mdc": "*",
+        "yui": "*",
+        "js-yaml": "*"
+    },
+    "keywords": [
+        "framework",
+        "webapp"
+    ],
+    "main": "lib/index",
+    "directories": [
+        "bin",
+        "lib"
+    ],
+    "bin": {
+        "mojito": "bin/mojito"
+    },
+    "engines": {
+        "node": ">= 0.6.0 < 0.9.0",
+        "npm": ">= 1.0.0"
+    },
+    "devDependencies": {
+        "jslint": "*"
+    },
+    "homepage": "",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/capecodehq/mojitos.git"
+    },
+    "bugs": "",
+    "scripts": {
+        "start": "./bin/mojito start",
+        "test": ""
+    }
+}
