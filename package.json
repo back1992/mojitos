@@ -1,7 +1,7 @@
 {
     "name": "mojitos",
     "version": "0.6.0",
-    "description": "Mojitos provides an architecture developers to build runtime agnostic web applications.",
+    "description": "Mojitos provides an architecture for developers to build runtime agnostic web applications.",
     "preferGlobal": true,
     "author": "Ric Allinson <allinson@yahoo-inc.com>",
     "contributors": [],
