@@ -23,5 +23,11 @@ middleware:
 # The configuration object that is passed to YUI()
 yui:
     debug: true
+    useSync: true
     bootstrap: false
-    base: "./yui/"
+    #base: "./yui/"
+    modules:
+        "mojito-router":
+            fullpath: "./mojits/core/yui_modules/router.common.js"
+        "mojito-dispatch":
+            fullpath: "./mojits/core/yui_modules/dispatch.common.js"
