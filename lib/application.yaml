@@ -10,7 +10,8 @@
         client: null
         server: null
 
-    # A list of directories that contain mojit folders
+    # The list of directories specifying where to find mojit types.
+    # If a directory doesn’t start with a “/”, it is taken as relative to the application directory.
     mojitsDirs:
         - ./mojits
 
@@ -29,7 +30,7 @@
         - dispatcher
 
     # New in 0.6.x
-    # The port to use for the application. Can be overriden by the start command.
+    # The port number (1-65355) that the application will use when running on the server.
     port: 3000
 
     # New in 0.6.x
@@ -37,15 +38,18 @@
     # Changing this value will have no effect.
     root: "./"
 
-    # A list of files specifying where to find routing information.
+    # The list of files specifying where to find routing information.
+    # If a file doesn’t start with a “/”, it is taken as relative to the application directory.
     routesFiles:
         - ./routes.json
 
     # TODO:
+    # The version of the resource. A resource is either a file to Mojito or metadata to the Resource Store.
+    # qSee the selector Propery and Selectors for for more information.
     selector: null
 
     # Changed in 0.6.x
-    # The configuration object that is passed to YUI()
+    # When Mojito is deployed to client, the yui Object specifies where and how to obtain YUI 3.
     yui:
         debug: true
         useSync: true
@@ -63,6 +67,9 @@
 
     # deprecated
     appPort: 3000
+
+    # deprecated
+    builds: null
 
     # deprecated
     cacheViewTemplates: null
