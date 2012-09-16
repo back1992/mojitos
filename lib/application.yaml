@@ -2,23 +2,19 @@
 ---
 
 - 
+    # The group these settings will be assigned to
     settings: ["default"]
 
-    # The applications root directory. This is set by the start command.
-    # Changing this value will have no effect.
-    root: "./"
-
-    # The port to use for the application. Can be overriden by the start command.
-    port: 3000
+    # TODO:
+    log: 
+        client: null
+        server: null
 
     # A list of directories that contain mojit folders
     mojitsDirs:
         - ./mojits
 
-    # A list of files specifying where to find routing information.
-    routesFiles:
-        - ./routes.json
-
+    # Changed in 0.6.x
     # The middleware to use and the order it should be loaded in.
     middleware:
         #- logger
@@ -32,12 +28,30 @@
         # - cookieParser # this is done in an addon
         - dispatcher
 
+    # New in 0.6.x
+    # The port to use for the application. Can be overriden by the start command.
+    port: 3000
+
+    # New in 0.6.x
+    # The applications root directory. This is set by the start command.
+    # Changing this value will have no effect.
+    root: "./"
+
+    # A list of files specifying where to find routing information.
+    routesFiles:
+        - ./routes.json
+
+    # TODO:
+    selector: null
+
+    # Changed in 0.6.x
     # The configuration object that is passed to YUI()
     yui:
         debug: true
         useSync: true
         #base: "./yui/"
 
+    # New in 0.6.x
     # The routes that will be used by the application
     routes: 
         default: 
@@ -46,3 +60,33 @@
             call:
                 type: core
                 action: index
+
+    # deprecated
+    appPort: 3000
+
+    # deprecated
+    cacheViewTemplates: null
+
+    # deprecated
+    deferAllOptionalAutoloads: null
+
+    # deprecated
+    embedJsFilesInHtmlFrame: null
+
+    # deprecated
+    mojitDirs: null
+
+    # deprecated
+    shareYUIInstance: null
+
+    # deprecated
+    specs: null
+
+    # deprecated
+    staticHandling: null
+
+    # deprecated
+    tunnelPrefix: null
+
+    # deprecated
+    tunnelTimeout: null
