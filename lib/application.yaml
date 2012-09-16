@@ -18,10 +18,10 @@
     # Changed in 0.6.x
     # The middleware to use and the order it should be loaded in.
     middleware:
-        - logger
         - favicon
+        - logger
         - static
-        - yui
+        #- yui
         - query
         - contextualizer
         - router

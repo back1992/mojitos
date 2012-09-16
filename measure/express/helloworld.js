@@ -23,15 +23,18 @@
 
 "use strict";
 
-var connect = require("../../node_modules/connect");
+var express = require("express");
 
-var app = connect()
-    .use(connect.favicon()) // mimic fav icon
-    .use(connect.logger('dev')) // mimic request logging
-    .use(connect.static('public-1')) // mimic user files
-    .use(connect.query()) // mimic URL processing
-    .use(function (req, res) {
-        res.end('hello world\n');
-    })
-    .listen(3000);
+var app = express()
+    .use(express.favicon()) // mimic fav icon
+    .use(express.logger('dev')) // mimic request logging
+    .use(express.static('public')) // mimic user files
+    .use(express.query()); // mimic URL processing
+
+app.get('/@:type/:action', function(req, res){
+  res.send("Helo world\n");
+});
+
+app.listen(3000);
+
 console.log('Server running at http://127.0.0.1:3000/');
