@@ -1,34 +1,35 @@
 # The Default Application Configuration
 ---
 
-# The applications root directory. This is set by the start command.
-# Changing this value will have no effect.
-root: "./"
+- 
+    settings: ["default"]
 
-# The port to use for the application. Can be overriden by the start command.
-port: 3000
+    # The applications root directory. This is set by the start command.
+    # Changing this value will have no effect.
+    root: "./"
 
-# The middleware to use and the order it should be loaded in.
-middleware:
-    #- logger
-    - static
-    - yui
-    - query
-    - contextualizer
-    - router
-    # - bodyParser # this is done in an addon
-    # - cookieParser # this is done in an addon
-    - dispatcher
+    # The port to use for the application. Can be overriden by the start command.
+    port: 3000
 
-# The configuration object that is passed to YUI()
-yui:
-    debug: true
-    useSync: true
-    #base: "./yui/"
-    modules:
-        "mojito-utils":
-            fullpath: "./mojits/core/yui_modules/utils.common.js"
-        "mojito-router":
-            fullpath: "./mojits/core/yui_modules/router.common.js"
-        "mojito-dispatch":
-            fullpath: "./mojits/core/yui_modules/dispatch.common.js"
+    # A list of directories that contain mojit folders
+    mojitsDirs:
+        - ./mojits
+
+    # The middleware to use and the order it should be loaded in.
+    middleware:
+        #- logger
+        - favicon
+        - static
+        - yui
+        - query
+        - contextualizer
+        - router
+        # - bodyParser # this is done in an addon
+        # - cookieParser # this is done in an addon
+        - dispatcher
+
+    # The configuration object that is passed to YUI()
+    yui:
+        debug: true
+        useSync: true
+        #base: "./yui/"

@@ -1,11 +1,10 @@
 # The default dimensions file
 
-- dimensions:
-    runtime:
-        common:
-            client: null
-            server: null
-    environment:
-        dev: null
-        test: null
-        prod: null
+- runtime:
+    common:
+        client: null
+        server: null
+- environment:
+    dev: null
+    test: null
+    prod: null
