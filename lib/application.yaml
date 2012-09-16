@@ -15,6 +15,10 @@
     mojitsDirs:
         - ./mojits
 
+    # A list of files specifying where to find routing information.
+    routesFiles:
+        - ./routes.json
+
     # The middleware to use and the order it should be loaded in.
     middleware:
         #- logger
@@ -33,3 +37,12 @@
         debug: true
         useSync: true
         #base: "./yui/"
+
+    # The routes that will be used by the application
+    routes: 
+        default: 
+            verbs: [get]
+            path: /
+            call:
+                type: core
+                action: index
