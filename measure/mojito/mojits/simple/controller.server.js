@@ -4,10 +4,10 @@
  * See the accompanying LICENSE file for terms.
  */
 
-YUI.add('simple', function(Y, NAME) {
-    Y.namespace('mojito.controllers')[NAME] = {
+YUI.add("simple", function(Y, NAME) {
+    Y.namespace("mojito.controllers")[NAME] = {
         index: function(ac) {
-            ac.done('hello world\n');
+            ac.done("Hello world\n");
         }
     };
 });

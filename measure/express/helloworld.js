@@ -32,7 +32,7 @@ var app = express()
     .use(express.query()); // mimic URL processing
 
 app.get('/@:type/:action', function(req, res){
-  res.send("Helo world\n");
+	res.send("Hello world\n");
 });
 
 app.listen(3000);
