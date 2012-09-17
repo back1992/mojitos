@@ -18,7 +18,10 @@ View [http://localhost:3000/](http://localhost:3000/@myMojit/index) in a browser
 
 # The API
 
-The Mojitos API is based around the YUI module system.
+The Mojitos API is based around the YUI module system. At the core there are two concepts that provide Mojitos functionality.
+
+* Mojits
+* Addons
 
 ## Mojit
 
@@ -76,6 +79,8 @@ The _name_ can be any anything however there are several reserved filenames whic
     });
 
 ## Addon
+
+An __addon__ is simple way of providing functionality to a __mojit__ functions __api__ object.
 
     YUI.add("mojito-addon-name", function (Y) {
         function Addon(command, adapter, api) {

@@ -5,6 +5,12 @@
     # The group these settings will be assigned to
     settings: ["default"]
 
+    # New in 0.6.x
+    # A list of YUI Module files to load before anything else. The YUI Module name must be the same as the file name.
+    # If a file doesn’t start with a “/”, it is taken as relative to the application directory.
+    initModules:
+        - ./init.js
+
     # TODO:
     log: 
         client: null
@@ -38,6 +44,16 @@
     # Changing this value will have no effect.
     root: "./"
 
+    # New in 0.6.x
+    # The routes that will be used by the application
+    routes: 
+        default: 
+            verbs: [get]
+            path: /
+            call:
+                type: core
+                action: index
+
     # The list of files specifying where to find routing information.
     # If a file doesn’t start with a “/”, it is taken as relative to the application directory.
     routesFiles:
@@ -54,16 +70,6 @@
         debug: true
         useSync: true
         #base: "./yui/"
-
-    # New in 0.6.x
-    # The routes that will be used by the application
-    routes: 
-        default: 
-            verbs: [get]
-            path: /
-            call:
-                type: core
-                action: index
 
     # deprecated
     appPort: 3000
