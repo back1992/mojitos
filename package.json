@@ -12,6 +12,10 @@
         "yui": "*",
         "js-yaml": "*"
     },
+    "devDependencies": {
+        "ytestrunner": "*",
+        "yui": "*"
+    },
     "keywords": [
         "framework",
         "webapp"
@@ -28,9 +32,6 @@
         "node": ">= 0.6.0 < 0.9.0",
         "npm": ">= 1.0.0"
     },
-    "devDependencies": {
-        
-    },
     "homepage": "",
     "repository": {
         "type": "git",
@@ -39,6 +40,6 @@
     "bugs": "",
     "scripts": {
         "start": "./bin/mojito start",
-        "test": ""
+        "test": "ytestrunner --yui3 "
     }
 }
