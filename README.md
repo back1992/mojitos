@@ -10,28 +10,33 @@ Clone the repo and install (requires [nodejs](http://nodejs.org/) and [npm](http
     cd ./mojitos
     npm install .
 
-Start the Mojitos server pointing at one of the examples;
+Start the Mojitos server pointing it at one of the examples;
 
     ./bin/mojito start -r ./examples/simple/part1
 
 View [http://localhost:3000/](http://localhost:3000/@myMojit/index) in a browser.
 
+__Note: currently only up to part 1 is implemented__
+
 # The API
 
-The Mojitos API is based around the YUI module system. At the core there are two concepts that provide Mojitos functionality.
+The Mojitos API is based around the YUI Module system. At the core there are two concepts that provide Mojitos functionality.
 
 * Mojits
 * Addons
 
 ## Mojit
 
-A Mojit is a collection of YUI modules. Mojits use folders in predefined locations to group ".js" files and infer relationships between them.
+A Mojit is a collection of YUI Modules. Mojits use folders in predefined locations to group ".js" files and infer relationships between them.
 
     mojits/
         mojit_name/
             controller.common.js
             tmpls.common.js
             confs.common.js
+            assets/
+            	other_files.css
+            	not_yui.js
             folder/
                 other_yui_module.common.js
 
@@ -46,6 +51,12 @@ The _name_ can be any anything however there are several reserved filenames whic
 * controller
 * tmpls
 * confs
+
+A __mojit__ folder can contain any number of sub folders allowing for arbitrary organization of files. All files must be YUI Modules and follow the pattern defined above. The only exception to this rule is the following folder;
+
+* assets
+
+The assets folder can contain any number of files and folders of any file type. The files placed in this folder are accessible publicly via a URI e.g. "http://localhost:3000/mojit_name/assets/other_file.css".
 
 ### controller
 
@@ -80,7 +91,7 @@ The _name_ can be any anything however there are several reserved filenames whic
 
 ## Addon
 
-An __addon__ is simple way of providing functionality to a __mojit__ functions __api__ object.
+An __addon__ a is simple way of providing functionality to a __mojit__ functions __api__ object.
 
     YUI.add("mojito-addon-name", function (Y) {
         function Addon(command, adapter, api) {
