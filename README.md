@@ -1,5 +1,7 @@
 # Mojitos
 
+[![Build Status](https://secure.travis-ci.org/capecodehq/mojitos.png?branch=master)](http://travis-ci.org/capecodehq/mojitos)
+
 Mojitos is a JavaScript MVC framework for developing runtime agnostic applications. This code is an experimental implementation of the [Yahoo! Mojito](http://developer.yahoo.com/cocktails/mojito/) API.
 
 # Quick Start
