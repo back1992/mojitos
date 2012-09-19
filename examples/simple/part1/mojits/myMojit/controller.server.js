@@ -4,15 +4,11 @@
  * See the accompanying LICENSE file for terms.
  */
 
-YUI.add('myMojit', function(Y, NAME) {
-
-    Y.namespace('mojito.controllers')[NAME] = {
-
+define('myMojit', ["mojito-utils"], function(utils) {
+    return {
         index: function(ac) {
-			Y.log('controller index', 'debug', NAME);
+			utils.log('controller index', 'debug');
             ac.done('Mojito is Working.');
         }
-
     };
-
 });

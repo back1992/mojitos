@@ -13,31 +13,31 @@ Document Path:          /@simple/index?foo=bar&baz=qux
 Document Length:        12 bytes
 
 Concurrency Level:      100
-Time taken for tests:   0.506 seconds
+Time taken for tests:   0.543 seconds
 Complete requests:      1000
 Failed requests:        0
 Write errors:           0
 Total transferred:      170000 bytes
 HTML transferred:       12000 bytes
-Requests per second:    1974.69 [#/sec] (mean)
-Time per request:       50.641 [ms] (mean)
-Time per request:       0.506 [ms] (mean, across all concurrent requests)
-Transfer rate:          327.83 [Kbytes/sec] received
+Requests per second:    1841.50 [#/sec] (mean)
+Time per request:       54.304 [ms] (mean)
+Time per request:       0.543 [ms] (mean, across all concurrent requests)
+Transfer rate:          305.72 [Kbytes/sec] received
 
 Connection Times (ms)
               min  mean[+/-sd] median   max
-Connect:        0    5   6.6      2      29
-Processing:     4   45  15.0     51      76
-Waiting:        1   34  14.6     35      64
-Total:         15   49  12.1     53      76
+Connect:        0    4   4.0      3      20
+Processing:     4   49  17.0     47      77
+Waiting:        3   36  15.8     32      74
+Total:          9   53  16.5     52      89
 
 Percentage of the requests served within a certain time (ms)
-  50%     53
-  66%     54
-  75%     57
-  80%     58
-  90%     65
-  95%     67
-  98%     73
-  99%     76
- 100%     76 (longest request)
+  50%     52
+  66%     57
+  75%     66
+  80%     70
+  90%     76
+  95%     77
+  98%     80
+  99%     88
+ 100%     89 (longest request)
