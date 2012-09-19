@@ -1,6 +1,6 @@
 /*jslint anon:true, sloppy:true, nomen:true, plusplus: true*/
 
-define("master", function (require) {
+define("master", function () {
 
     var map = {},
         microtime,
@@ -29,8 +29,8 @@ define("master", function (require) {
 
         index: function (ac) {
 
-            // ac.use("mojito-addon-composite");
-            ac.composite = require("mojito-addon-composite");
+            ac.use("mojito-addon-composite");
+
             // ac.done("d");return;
             // var duration = 0,
             //     start;
@@ -65,6 +65,4 @@ define("master", function (require) {
             });
         }
     };
-
 });
-
