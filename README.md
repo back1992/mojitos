@@ -62,42 +62,40 @@ The assets folder can contain any number of files and folders of any file type. 
 
 ### controller
 
-    YUI.add("mojit_name", function(Y, NAME) {
-        Y.namespace("mojito.controllers")[NAME] = {
-            index: function(api) {
-                api.done("Hello world");
-            }
-        };
+    define("mojit_name", {
+        index: function(api) {
+            api.done("Hello world");
+        }
     });
 
 ### tmpls (not implemented yet)
 
-    YUI.add("mojit-name-tmpls", function (Y, NAME) {
-        Y.namespace("mojito")[NAME] = {
-            index: {
-                engine: "yui-module-name",
-                tmpl: "<p>{{key}}</p>"
-            }
-        };
+    define("mojit-name-tmpls", {
+        index: {
+            engine: "yui-module-name",
+            tmpl: "<p>{{key}}</p>"
+        }
     });
 
 ### confs (not implemented yet)
 
-    YUI.add("mojit-name-confs", function (Y, NAME) {
-        Y.namespace("mojito")[NAME] = {
-            name: {
-                key: "val"
-            }
-        };
+    define("mojit-name-confs", {
+        name: {
+            key: "val"
+        }
     });
 
 ## Addon
 
 An __addon__ a is simple way of providing functionality to a __mojit__ functions __api__ object.
 
-    YUI.add("mojito-addon-name", function (Y) {
+    define("mojito-addon-name", function () {
         function Addon(command, adapter, api) {
             // ...
         }
-        Y.namespace("mojito.addons").name = Addon;
+        return {
+            attach: function (command, adapter, api) {
+                api.addon = new Addon(command, adapter, api);
+            }
+        };
     });
