@@ -22,7 +22,7 @@ __Note: currently only up to part 1 is implemented__
 
 # The API
 
-The Mojitos API is based around the YUI Module system. At the core there are two concepts that provide Mojitos functionality.
+The Mojitos API is based around the [AMD Module](https://github.com/amdjs/amdjs-api/wiki/AMD) system. At the core there are two concepts that provide Mojitos functionality.
 
 * Mojits
 * Addons
