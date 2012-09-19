@@ -13,8 +13,8 @@ YUI.add("test-output-handler", function (Y) {
     		Assert.areSame("object", typeof new Handler());
     	});
 
-        Y.it("should return a function from flush", function () {
-            Assert.areSame("function", typeof new Handler().flush);
+        Y.it("should return a function from send", function () {
+            Assert.areSame("function", typeof new Handler().send);
         });
     });
 
