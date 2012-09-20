@@ -34,8 +34,6 @@ A Mojit is a collection of YUI Modules. Mojits use folders in predefined locatio
     mojits/
         mojit_name/
             controller.common.js
-            tmpls.common.js
-            confs.common.js
             assets/
             	other_files.css
             	not_yui.js
@@ -51,8 +49,6 @@ The ".js" files have a special naming convention "[name].[affinity].js". The _af
 The _name_ can be any anything however there are several reserved filenames which have special meaning;
 
 * controller
-* tmpls
-* confs
 
 A __mojit__ folder can contain any number of sub folders allowing for arbitrary organization of files. All files must be YUI Modules and follow the pattern defined above. The only exception to this rule is the following folder;
 
