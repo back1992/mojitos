@@ -29,7 +29,7 @@ The Mojitos API is based around the [AMD Module](https://github.com/amdjs/amdjs-
 
 ## Mojit
 
-A Mojit is a collection of YUI Modules. Mojits use folders in predefined locations to group ".js" files and infer relationships between them.
+A Mojit is a collection of AMD Modules. Mojits use folders in predefined locations to group ".js" files and infer relationships between them.
 
     mojits/
         mojit_name/
@@ -50,7 +50,7 @@ The _name_ can be any anything however there are several reserved filenames whic
 
 * controller
 
-A __mojit__ folder can contain any number of sub folders allowing for arbitrary organization of files. All files must be YUI Modules and follow the pattern defined above. The only exception to this rule is the following folder;
+A __mojit__ folder can contain any number of sub folders allowing for arbitrary organization of files. All files must be AMD Modules and follow the pattern defined above. The only exception to this rule is the following folder;
 
 * assets
 
