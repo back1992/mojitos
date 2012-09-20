@@ -36,9 +36,9 @@ A Mojit is a collection of YUI Modules. Mojits use folders in predefined locatio
             controller.common.js
             assets/
             	other_files.css
-            	not_yui.js
+            	not_amd_file.js
             folder/
-                other_yui_module.common.js
+                other_amd_file.common.js
 
 The ".js" files have a special naming convention "[name].[affinity].js". The _affinity_ is used to decide where the code can be executed. Currently this can be one of three values;
 
