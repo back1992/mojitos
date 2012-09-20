@@ -68,23 +68,6 @@ The assets folder can contain any number of files and folders of any file type. 
         }
     });
 
-### tmpls (not implemented yet)
-
-    define("mojit-name-tmpls", {
-        index: {
-            engine: "yui-module-name",
-            tmpl: "<p>{{key}}</p>"
-        }
-    });
-
-### confs (not implemented yet)
-
-    define("mojit-name-confs", {
-        name: {
-            key: "val"
-        }
-    });
-
 ## Addon
 
 An __addon__ a is simple way of providing functionality to a __mojit__ functions __api__ object.
