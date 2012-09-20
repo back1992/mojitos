@@ -4,8 +4,8 @@
  * See the accompanying LICENSE file for terms.
  */
 
-YUI.add("simple", function(Y, NAME) {
-    Y.namespace("mojito.controllers")[NAME] = {
+define("simple", function() {
+    return {
         index: function(ac) {
             ac.done("Hello world\n");
         }

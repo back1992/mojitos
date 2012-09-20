@@ -9,7 +9,7 @@
         "commander": "*",
         "connect": "*",
         "mdc": "*",
-        "yui": "*",
+        "requirejs": "*",
         "js-yaml": "*"
     },
     "devDependencies": {

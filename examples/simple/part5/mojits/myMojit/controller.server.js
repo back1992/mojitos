@@ -1,24 +1,36 @@
-/*
- * Copyright (c) 2011-2012, Yahoo! Inc.  All rights reserved.
- * Copyrights licensed under the New BSD License.
- * See the accompanying LICENSE file for terms.
- */
+// (The MIT License)
 
-YUI.add('myMojit', function(Y, NAME) {
+// Copyright (c) 2012 Richard S Allinson <rsa@mountainmansoftware.com>
 
-    Y.namespace('mojito.controllers')[NAME] = {
+// Permission is hereby granted, free of charge, to any person obtaining
+// a copy of this software and associated documentation files (the
+// 'Software'), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to
+// permit persons to whom the Software is furnished to do so, subject to
+// the following conditions:
 
-        index: function(ac) {
+// The above copyright notice and this permission notice shall be
+// included in all copies or substantial portions of the Software.
 
-            ac.models.get('message').get(function(data) {
+// THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+// IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+// CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+// TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+// SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+/*global define: true*/
+
+"use strict";
+
+define('myMojit', ["mojito-models-addon", "myMojitModel"], function () {
+    return {
+        index: function (ac) {
+            ac.models.get('message').get(function (data) {
                 ac.done(data);
             });
-            
         }
-
     };
-
-}, '0.0.1', { requires: [
-    'mojito-models-addon',
-    'myMojitModel'
-]});
+});
