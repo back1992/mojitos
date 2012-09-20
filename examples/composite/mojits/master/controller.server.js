@@ -1,6 +1,6 @@
 /*jslint anon:true, sloppy:true, nomen:true, plusplus: true*/
 
-define("master", function () {
+define("master", ["mojito-addon-composite"], function () {
 
     var map = {},
         microtime,
@@ -28,8 +28,6 @@ define("master", function () {
     return {
 
         index: function (ac) {
-
-            ac.use("mojito-addon-composite");
 
             // ac.done("d");return;
             // var duration = 0,
