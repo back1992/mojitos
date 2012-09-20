@@ -76,9 +76,7 @@ An __addon__ a is simple way of providing functionality to a __mojit__ functions
         function Addon(command, adapter, api) {
             // ...
         }
-        return {
-            attach: function (command, adapter, api) {
-                api.addon = new Addon(command, adapter, api);
-            }
+        return function (command, adapter, api) {
+            api.addon = new Addon(command, adapter, api);
         };
     });
