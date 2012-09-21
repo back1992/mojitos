@@ -8,9 +8,10 @@
     "dependencies": {
         "commander": "*",
         "connect": "*",
+        "handlebars": "*",
+        "js-yaml": "*",
         "mdc": "*",
-        "requirejs": "*",
-        "js-yaml": "*"
+        "requirejs": "*"
     },
     "devDependencies": {
         "ytestrunner": "*",

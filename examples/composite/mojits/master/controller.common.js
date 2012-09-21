@@ -25,7 +25,7 @@
 
 "use strict";
 
-define("master", ["mojito-addon-composite"], function () {
+define("master", ["mojito-utils", "mojito-addon-composite", "mojito-addon-render"], function (utils) {
 
     var map = {},
         microtime,
@@ -73,7 +73,9 @@ define("master", ["mojito-addon-composite"], function () {
 
             ac.composite.execute(map, function (data, meta) {
 
-                ac.done(JSON.stringify(data, null, 4), meta);
+                ac.render.tmpl({items: utils.objValsToArray(data)}, "master-tmpls", "index", function (data) {
+                    ac.done(data, meta);
+                });
 
                 // var total = now() - start;
 
