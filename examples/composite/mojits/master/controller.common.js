@@ -73,9 +73,7 @@ define("master", ["mojito-utils", "mojito-addon-composite", "mojito-addon-render
 
             ac.composite.execute(map, function (data, meta) {
 
-                ac.render.tmpl({items: utils.objValsToArray(data)}, "master-tmpls", "index", function (data) {
-                    ac.done(data, meta);
-                });
+                ac.render.tmpl({items: utils.objValsToArray(data)}, "master-tmpls", "index");
 
                 // var total = now() - start;
 
