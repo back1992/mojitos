@@ -25,19 +25,10 @@
 
 "use strict";
 
-define("master", ["mojito-utils", "mojito-addon-composite", "mojito-addon-render", "mojito-addon-http"], function (utils) {
+define("master", ["mojito-utils", "mojito-addon-composite", "mojito-addon-render"], function (utils) {
 
     var map = {},
-        microtime,
-        now,
         i;
-
-    try {
-        microtime = require("microtime");
-        now = microtime.now;
-    } catch (e) {
-        now = Date.now;
-    }
 
     for (i = 1; i <= 50; i = i + 1) {
         map["slot-" + i] = {
@@ -51,42 +42,10 @@ define("master", ["mojito-utils", "mojito-addon-composite", "mojito-addon-render
     }
 
     return {
-
-        index: function (ac) {
-
-            // ac.done("d");return;
-            // var duration = 0,
-            //     start;
-
-            // Y.each(Y.mojito.controllers, function (c) {
-            //     var f = c.index;
-            //     if (f) {
-            //         c.index = function (ac) {
-            //             var start = now();
-            //             f.call(c, ac);
-            //             duration += (now() - start);
-            //         };
-            //     }
-            // });
-
-            // start = now();
-
-            ac.composite.execute(map, function (data) {
-
-                ac.http.type("html");
-
-                ac.render({items: utils.objValsToArray(data)}, "master-tmpls", "index");
-
-                // var total = now() - start;
-
-                // console.log("============================================================================");
-                // console.log("Overall time: " + (microtime ? total / 1000 : total) + " msec");
-                // if (duration > 0) {
-                //     console.log("Time spent in our code: " + (microtime ? duration / 1000 : duration) + " msec [" + Math.round((100 * duration) / total) + "%]");
-                // } else {
-                //     console.log("Execute the app a second time to see how much time was spent in the app code");
-                // }
-                // console.log("============================================================================");
+        index: function (api) {
+            api.http.type("html");
+            api.composite.execute(map, function (data) {
+                api.render({items: utils.objValsToArray(data)}, "master-tmpls", "index");
             });
         }
     };

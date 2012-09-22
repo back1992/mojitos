@@ -28,9 +28,7 @@
 define("dummy", ["mojito-addon-render"], function () {
     return {
         index: function (api) {
-            api.render({msg: "dummy"}, "dummy-tmpls", "index", function (data) {
-                api.done(data);
-            });
+            api.render({msg: "dummy"}, "dummy-tmpls", "index");
         }
     };
 });
