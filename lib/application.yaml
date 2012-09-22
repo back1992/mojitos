@@ -51,10 +51,10 @@
         - logger
         - static
         - query
+        #- bodyParser # this should be done in an addon (currently in query)
+        #- cookieParser # this should be done in an addon (currently in query)
         - contextualizer
         - router
-        # - bodyParser # this is done in an addon
-        # - cookieParser # this is done in an addon
         - dispatcher
 
     # New in 0.6.x

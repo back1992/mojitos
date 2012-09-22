@@ -11,6 +11,7 @@
         "handlebars": "*",
         "js-yaml": "*",
         "mdc": "*",
+        "mime": "*",
         "requirejs": "*"
     },
     "devDependencies": {

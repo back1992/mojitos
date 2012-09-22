@@ -25,7 +25,7 @@
 
 "use strict";
 
-define("master", ["mojito-utils", "mojito-addon-composite", "mojito-addon-render"], function (utils) {
+define("master", ["mojito-utils", "mojito-addon-composite", "mojito-addon-render", "mojito-addon-http"], function (utils) {
 
     var map = {},
         microtime,
@@ -71,9 +71,11 @@ define("master", ["mojito-utils", "mojito-addon-composite", "mojito-addon-render
 
             // start = now();
 
-            ac.composite.execute(map, function (data, meta) {
+            ac.composite.execute(map, function (data) {
 
-                ac.render.tmpl({items: utils.objValsToArray(data)}, "master-tmpls", "index");
+                ac.http.type("html");
+
+                ac.render({items: utils.objValsToArray(data)}, "master-tmpls", "index");
 
                 // var total = now() - start;
 
