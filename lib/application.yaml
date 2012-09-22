@@ -94,7 +94,7 @@
         #base: "./yui/"
 
     # deprecated
-    appPort: 3000
+    appPort: null
 
     # deprecated
     builds: null
