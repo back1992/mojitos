@@ -1,6 +1,6 @@
 . ~/.bashrc
 nvm use 0.8
-node ./bin/mojito start -r ./measure/mojito &
+./bin/mojito start -r ./measure/mojito &
 
 sleep 5
 
