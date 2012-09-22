@@ -12,7 +12,8 @@
         "js-yaml": "*",
         "mdc": "*",
         "mime": "*",
-        "requirejs": "*"
+        "requirejs": "*",
+        "send": "*"
     },
     "devDependencies": {
         "ytestrunner": "*",

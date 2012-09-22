@@ -29,7 +29,9 @@ var app = express()
     .use(express.favicon()) // mimic fav icon
     .use(express.logger('dev')) // mimic request logging
     .use(express.static('public')) // mimic user files
-    .use(express.query()); // mimic URL processing
+    .use(express.query()) // mimic URL processing
+    .use(express.bodyParser())
+    .use(express.cookieParser());
 
 app.get('/@:type/:action', function(req, res){
 	res.send("Hello world\n");
