@@ -20,11 +20,11 @@ In a new directory create the file __./mojits/simple/controller.common.js__ with
         }
     });
 
-Then in the same directory execute the following command.
+Then in the same directory execute the __start__ command.
 
     mojito start
 
-View [http://localhost:3000/@simple/index](http://localhost:3000/@simple/index) in a browser.
+Open [http://localhost:3000/@simple/index](http://localhost:3000/@simple/index) in a browser.
 
 <!--
 Clone the repo and install (requires [nodejs](http://nodejs.org/) and [npm](https://npmjs.org/));
@@ -50,7 +50,13 @@ The Mojitos API is designed to abstract away the runtime so you can execute the 
 
 # API Reference
 
-The Mojitos API is a collection of __addons__ that are accessed via the first argument of a controller function.
+The Mojitos API is a collection of __addons__ that are accessed via the first argument of a controller function. In order to uses __addons__ they must be _required_ using the AMD require system. For example the controller below is requiring addon_a, addon_b and addon_c.
+
+    define("mojit_name", ["addon_a", "addon_b", "addon_c"], {
+        index: function(api) {
+            // ...
+        }
+    });
 
 ## api
 
