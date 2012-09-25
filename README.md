@@ -48,7 +48,7 @@ The Mojitos API is designed to abstract away the runtime so you can execute the 
 * Mojits
 * Addons
 
-# API Reference (still to be tested)
+# API Reference (still to be implemented & tested)
 
 * [api](#api)
 * [api.params](#apiparams)
@@ -57,11 +57,21 @@ The Mojitos API is designed to abstract away the runtime so you can execute the 
 * [api.cookies](#apicookies)
 * [api.http](#apihttp)
 
-The Mojitos API is a collection of __addons__ that are accessed via the first argument of a controller function. In order to uses __addons__ they must be _required_ using the AMD require system. For example the controller below is requiring addon_a, addon_b and addon_c.
+The Mojitos API is a collection of __addons__ that are accessed via the first argument of a controller function. In order to uses __addons__ they must be required using the AMD require system. For example the controller below is requiring addon_a, addon_b and addon_c.
 
     define("mojit_name", ["addon_a", "addon_b", "addon_c"], {
         index: function(api) {
             // ...
+        }
+    });
+
+Or alternatively you can __use__ them as required;
+
+    define("mojit_name", {
+        index: function(api) {
+            api.use(["addon_a", "addon_b", "addon_c"], function () {
+                // ...
+            });
         }
     });
 
@@ -95,6 +105,18 @@ or;
 ### api.meta
 
 The __meta__ object is a bag of data that Mojitos or other __mojits__ may inspect. Anything attached to the __meta__ object is passed upstream with the data when either [api.send](#apisend) or [api.done](#apidone) is called. Upstream may mean Mojitos itself or another __mojit__ if you've used a dispatching __addon__ such as [api.composite](#apicomposite).
+
+### api.use
+
+This function loads __addons__ for use in the current scope.
+
+    define("mojit_name", {
+        index: function(api) {
+            api.use(["addon_a", "addon_b", "addon_c"], function () {
+                // ...
+            });
+        }
+    });
 
 ## api.params
 
