@@ -204,15 +204,65 @@ yields:
 
 ## api.params
 
+An __addon__ for dealing with inputs.
+
 ### api.params.get
+
+This function returns an input value with the lookup performed in the following order:
+
+    api.params.route();
+    api.params.body();
+    api.params.query();
+
+Calling [api.params.body](#apiparamsbody), [api.params.route](#apiparamsroute), and [api.params.query](#apiparamsquery) should be favored for clarity.
 
 ### api.params.route
 
+This function contains properties mapped to the named route "parameters". For example if you have the route /user/:name, then the "name" property is available to you as api.params.route("name"). This object defaults to {}.
+
+    // GET /user/mojitos
+    api.params.route("name");
+    // => "mojitos"
+
 ### api.params.query
+
+This function is an object containing the parsed query-string, defaulting to {}.
+
+    // GET /search?q=mojitos+js
+    api.params.query("q");
+    // => "mojitos js"
+
+    // GET /shoes?order=desc&shoe[color]=blue&shoe[type]=converse
+    api.params.query("order");
+    // => "desc"
+
+    api.params.query("shoe.color");
+    // => "blue"
+
+    api.params.query("shoe.type");
+    // => "converse"
 
 ### api.params.body
 
+This property is an object containing the parsed request body. This feature is provided by the bodyParser() middleware, though other body parsing middleware may follow this convention as well. This property defaults to {} when bodyParser() is used.
+
+    // POST user[name]=mojitos&user[email]=mojitos@learnboost.com
+    api.params.body("user.name");
+    // => "mojitos"
+
+    api.params.body("user.email");
+    // => "mojitos@learnboost.com"
+
+    // POST { "name": "mojitos" }
+    api.params.body("name");
+    // => "mojitos"
+
 ### api.params.files
+
+This property is an object of the files uploaded. This feature is provided by the bodyParser() middleware, though other body parsing middleware may follow this convention as well. This property defaults to {} when bodyParser() is used.
+For example if a file field was named "image", and a file was uploaded, req.files.image would contain the following File object:
+
+    { put-example-here: true }
 
 ## api.render
 
