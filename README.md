@@ -305,7 +305,7 @@ The assets folder can contain any number of files and folders of any file type a
 
 ### controller
 
-The key concept Mojitos uses to serve pages is what it calls a controller. A controller has a one-to-one mapping to a URI. For example the URI "http://localhost:3000/@mojito_name/index" would execute the function "index" in the AMD module below (assuming the module file was found at _./mojits/mojit_name/controller.common.js_).
+The key concept Mojitos uses to serve pages is what it calls a controller. A controller has a one-to-one mapping to a URI. For example the URI "http://localhost:3000/@mojito\_name/index" informs Mojitos to; load the module __mojit\_name__ and call the funciton __index__ (assuming the module file was found at _./mojits/mojit_name/controller.common.js_).
 
     define("mojit_name", {
         index: function(api) {
