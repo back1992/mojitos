@@ -108,7 +108,7 @@ The __meta__ object is a bag of data that Mojitos or other __mojits__ may inspec
 
 ### api.use
 
-This function loads __addons__ for use in the current scope.
+This function loads __addons__ for use as needed.
 
     define("mojit_name", {
         index: function(api) {
