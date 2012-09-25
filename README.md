@@ -58,7 +58,7 @@ The Mojitos API is a collection of __addons__ that are accessed via the first ar
         }
     });
 
-Mojitos attempts to follow the [expressjs](http://expressjs.com/) api where possible to help with developer adoption.
+Mojitos attempts to follow the [expressjs](http://expressjs.com/) api where possible to help with the developers cognitive load.
 
 ## api
 
