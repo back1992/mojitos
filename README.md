@@ -133,12 +133,12 @@ This function is an object containing the parsed query-string, defaulting to {}.
 
 This property is an object containing the parsed request body. This feature is provided by the bodyParser() middleware, though other body parsing middleware may follow this convention as well. This property defaults to {} when bodyParser() is used.
 
-    // POST user[name]=mojitos&user[email]=mojitos@learnboost.com
+    // POST user[name]=mojitos&user[email]=mojitos@learnmojito.com
     api.params.body("user.name");
     // => "mojitos"
 
     api.params.body("user.email");
-    // => "mojitos@learnboost.com"
+    // => "mojitos@learnmojito.com"
 
     // POST { "name": "mojitos" }
     api.params.body("name");
