@@ -91,7 +91,11 @@ The __meta__ object is a bag of data that Mojitos or other __mojits__ may inspec
 
 ## api.composite
 
+An __addon__ for composing one or __mojits__ into a single data structure or template. This __addon__ can be used for constructing pages from reusable __mojits__.
+
 ### api.composite.execute
+
+TODO
 
 ## api.cookies
 
