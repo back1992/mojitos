@@ -48,7 +48,7 @@ The Mojitos API is designed to abstract away the runtime so you can execute the 
 * Mojits
 * Addons
 
-# API Reference
+# API Reference (still to be tested)
 
 The Mojitos API is a collection of __addons__ that are accessed via the first argument of a controller function. In order to uses __addons__ they must be _required_ using the AMD require system. For example the controller below is requiring addon_a, addon_b and addon_c.
 
