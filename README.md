@@ -60,11 +60,32 @@ The Mojitos API is a collection of __addons__ that are accessed via the first ar
 
 ## api
 
+An object __addons__ attach to and is the only argument to a controller function. The __api__ has the following functions attached by default along with the __api.http__ __addon__.
+
+### api.send
+
+Send data & or meta upstream. Can be called many times.
+
+    api.send("Hello world");
+    api.send("Hello world", {http: {code: 200}});
+
 ### api.done
+
+Operates the same as __api.send()__ then signals that current __mojit__ will send no more data or meta. Can only be called once.
+
+    api.done("Hello world");
+
+or;
+
+    api.done("Hello world", {http: {code: 200}});
+
+or;
+
+    api.done();
 
 ### api.meta
 
-### api.send
+The __meta__ object is a bag of data that Mojitos or other __mojits__ may inspect. Anything attached to the __meta__ object is passed upstream with the data when either __send()__ or __done()__ is called. Upstream may mean Mojitos itself or another __mojit__ if you've used a dispatching __addon__ such as __api.composite__.
 
 ## api.composite
 
