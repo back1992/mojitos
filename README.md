@@ -60,7 +60,7 @@ The Mojitos API is a collection of __addons__ that are accessed via the first ar
 
 ## api
 
-An object __addons__ attach to and is the only argument to a controller function. The __api__ has the following functions attached by default along with the __api.http__ __addon__.
+An object __addons__ attach to and the only argument to a controller function. The __api__ has the following functions attached by default along with the [api.http](#apihttp) __addon__.
 
 ### api.send
 
