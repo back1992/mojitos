@@ -155,11 +155,11 @@ For example if a file field was named "image", and a file was uploaded, req.file
 
 TODO
 
-## api.composite
+## api.compose
 
-An __addon__ for composing one or __mojits__ into a single data structure or template. This __addon__ can be used for constructing pages from reusable __mojits__.
+An __addon__ for composing one or more __mojits__ into a single data structure or template. This __addon__ can be used for constructing pages from reusable __mojits__.
 
-### api.composite.execute
+### api.compose.execute
 
 TODO
 
