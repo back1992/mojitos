@@ -65,7 +65,7 @@ The Mojitos API is a collection of __addons__ that are accessed via the first ar
         }
     });
 
-Or alternatively you can __use__ them as required;
+Or alternatively you can __use__ them as needed;
 
     define("mojit_name", {
         index: function(api) {
