@@ -58,6 +58,8 @@ The Mojitos API is a collection of __addons__ that are accessed via the first ar
         }
     });
 
+Mojitos attempts to follow the [expressjs](http://expressjs.com/) api where possible to help with developer adoption.
+
 ## api
 
 An object __addons__ attach to and the only argument to a controller function. The __api__ has the following functions attached by default along with the [api.http](#apihttp) __addon__.
@@ -71,7 +73,7 @@ Send data & or meta upstream. Can be called many times.
 
 ### api.done
 
-Operates the same as __api.send()__ then signals that current __mojit__ will send no more data or meta. Can only be called once.
+Operates the same as [api.send](#apisend) then signals that the current __mojit__ will send no more data or meta. Can only be called once.
 
     api.done("Hello world");
 
@@ -85,7 +87,7 @@ or;
 
 ### api.meta
 
-The __meta__ object is a bag of data that Mojitos or other __mojits__ may inspect. Anything attached to the __meta__ object is passed upstream with the data when either __send()__ or __done()__ is called. Upstream may mean Mojitos itself or another __mojit__ if you've used a dispatching __addon__ such as __api.composite__.
+The __meta__ object is a bag of data that Mojitos or other __mojits__ may inspect. Anything attached to the __meta__ object is passed upstream with the data when either [api.send](#apisend) or [api.done](#apidone) is called. Upstream may mean Mojitos itself or another __mojit__ if you've used a dispatching __addon__ such as [api.composite](#apicomposite).
 
 ## api.composite
 
@@ -93,27 +95,112 @@ The __meta__ object is a bag of data that Mojitos or other __mojits__ may inspec
 
 ## api.cookies
 
+An __addon__ for dealing with cookies.
+
 ### api.cookies.set
+
+Set cookie name to value, which may be a string or object converted to JSON. The path option defaults to "/".
+
+    api.cookies.set("name", "mojitos", { domain: ".example.com", path: "/admin", secure: true });
+    api.cookies.set("rememberme", "1", { expires: new Date(Date.now() + 900000), httpOnly: true });
+
+The maxAge option is a convenience option for setting "expires" relative to the current time in milliseconds. The following is equivalent to the previous example.
+
+    api.cookies.set("rememberme", "1", { maxAge: 900000, httpOnly: true });
+
+An object may be passed which is then serialized as JSON, which is automatically parsed by the bodyParser() middleware.
+
+    api.cookies.set("cart", { items: [1,2,3] });
+    api.cookies.set("cart", { items: [1,2,3] }, { maxAge: 900000 });
+
+Signed cookies are also supported through this method. Simply pass the signed option. When given api.cookies.set() will use the secret passed to connect.cookieParser(secret) to sign the value.
+
+    api.cookies.set("name", "mojitos", { signed: true });
+
+Later you may access this value through the [api.cookies.signed](#apicookiessigned) object.
 
 ### api.cookies.get
 
+When the cookieParser() middleware is used this object defaults to {}, otherwise contains the cookies sent by the user-agent.
+
+    // Cookie: name=mojitos
+    api.cookies.get("name");
+    // => "mojitos"
+
 ### api.cookies.signed
+
+When the cookieParser(secret) middleware is used this object defaults to {}, otherwise contains the signed cookies sent by the user-agent, unsigned and ready for use. Signed cookies reside in a different object to show developer intent, otherwise a malicious attack could be placed on cookie values which are easy to spoof.
+
+    // Cookie: name=mojitos.CP7AWaXDfAKIRfH49dQzKJx7sKzzSoPq7/AcBBRVwlI3
+    api.cookies.signed("name");
+    // => "mojitos"
 
 ### api.cookies.clear
 
+Clear cookie name. The path option defaults to "/".
+
+    res.cookie('name', 'mojitos', { path: '/admin' });
+    res.clearCookie('name', { path: '/admin' });
+
 ## api.http
+
+__Server Only:__ An __addon__ for dealing with the HTTP protocol. The __addon__ is safe to use on the client however the functions are a noop.
 
 ### api.http.set
 
+Set header field to value, or pass an object to set multiple fields at once.
+
+    api.http.set("Content-Type", "text/plain");
+
+    api.http.set({
+        "Content-Type": "text/plain",
+        "Content-Length": "123"
+    });
+
 ### api.http.get
+
+Get the case-insensitive response header field.
+
+    api.http.get("Content-Type");
+    // => "text/plain"
 
 ### api.http.charset
 
+Assign the charset. Defaults to "utf-8".
+
+    api.http.charset("value");
+    api.done("some html");
+    // => charset: value
+
 ### api.http.type
+
+Sets the Content-Type to the mime lookup of type, or when "/" is present the Content-Type is simply set to this literal value.
+
+    api.http.type('.html');
+    api.http.type('html');
+    api.http.type('json');
+    api.http.type('application/json');
+    api.http.type('png');
 
 ### api.http.status
 
+Chainable alias of node's `res.statusCode=`.
+
+    res.status(404).done("Not found.");
+
 ### api.http.links
+
+Join the given links to populate the "Link" response header field.
+
+    res.links({
+        next: "http://api.example.com/users?page=2",
+        last: "http://api.example.com/users?page=5"
+    });
+
+yields:
+
+    Link: <http://api.example.com/users?page=2>; rel="next", 
+          <http://api.example.com/users?page=5>; rel="last"
 
 ## api.params
 
