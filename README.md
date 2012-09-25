@@ -270,6 +270,8 @@ For example if a file field was named "image", and a file was uploaded, req.file
 
 ## api.render
 
+TODO
+
 ## Mojit
 
 A Mojit is a collection of AMD Modules. Mojits use folders in predefined locations to group ".js" files and infer relationships between them.
