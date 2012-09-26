@@ -25,10 +25,12 @@
 
 "use strict";
 
-define("dummy", ["mojito-addon-render"], function () {
+define("dummy", function () {
     return {
         index: function (api) {
-            api.render({msg: "dummy"}, "dummy-tmpls", "index");
+        	api.use("mojito-addon-render", function () {
+        		api.render({msg: "dummy"}, "dummy-tmpls", "index");
+        	});
         }
     };
 });
