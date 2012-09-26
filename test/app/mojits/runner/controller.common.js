@@ -21,18 +21,28 @@
 // TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 // SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-"use strict";
+/*globals define: true*/
 
-var connect = require("../../node_modules/connect");
+'use strict';
 
-var app = connect()
-    .use(connect.favicon()) // mimic fav icon
-    .use(connect.logger('dev')) // mimic request logging
-    .use(connect.static('public-1')) // mimic user files
-    .use(connect.query()) // mimic URL processing
-    .use(function (req, res) {
-        res.end('hello world\n');
-    })
-    .listen(3000);
+define("runner-controller", function () {
+	return {
+		index: function (ac) {
+			require(["jasmine"], function (jasmine) {
 
-console.log('Server running at http://127.0.0.1:3000/');
+				global.describe = jasmine.describe;
+				global.it = jasmine.it;
+				global.expect = jasmine.expect;
+
+				describe("A suite", function() {
+					it("contains spec with an expectation", function() {
+						expect(true).toBe(true);
+					});
+				});
+
+			});
+
+			ac.done("Tested");
+		}
+    };
+});

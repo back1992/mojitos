@@ -1,24 +1,25 @@
 
-YUI.add("test-output-handler", function (Y) {
+if (typeof define !== 'function') {
+    var define = require('amdefine')(module);
+}
 
-    var Assert = Y.Assert,
-        Handler = require("../lib/output-handler");
+define(["assert", "../lib/output-handler"], function (assert, Handler) {
 
-    Y.describe("output-handler", function () {
-    	Y.it("should be a function", function () {
-    		Assert.areSame("function", typeof Handler);
-    	});
+    describe("output-handler", function () {
+        it("should be a function", function () {
+            assert.equal("function", typeof Handler);
+        });
 
-    	Y.it("should be a object", function () {
-    		Assert.areSame("object", typeof new Handler());
-    	});
+        it("should be a object", function () {
+            assert.equal("object", typeof new Handler());
+        });
 
-        Y.it("should return a function from send", function () {
-            Assert.areSame("function", typeof new Handler().send);
+        it("should return a function from send", function () {
+            assert.equal("function", typeof new Handler().send);
         });
     });
 
-    Y.describe("output-handler function done", function () {
+    describe("output-handler function done", function () {
 
         var res = {
                 writeHead: function () {
@@ -37,11 +38,11 @@ YUI.add("test-output-handler", function (Y) {
                 }
             };
 
-        Y.it("should return a function", function () {
-            Assert.areSame(typeof new Handler().done, "function");
+        it("should return a function", function () {
+            assert.equal(typeof new Handler().done, "function");
         });
 
-        Y.it("should result in the text done", function () {
+        it("should result in the text done", function () {
 
             var handler,
                 req = {},
@@ -53,13 +54,13 @@ YUI.add("test-output-handler", function (Y) {
 
             handler.done("done");
 
-            Assert.areSame(200, res.cWriteHead[0]);
-            Assert.areSame("done", res.cWrite);
-            Assert.areSame(undefined, res.cEnd);
-            Assert.areSame(true, handler.headersSent);
+            assert.equal(200, res.cWriteHead[0]);
+            assert.equal("done", res.cWrite);
+            assert.equal(undefined, res.cEnd);
+            assert.equal(true, handler.headersSent);
         });
 
-        Y.it("should result in the http header text/plain", function () {
+        it("should result in the http header text/plain", function () {
 
             var handler,
                 req = {},
@@ -71,13 +72,13 @@ YUI.add("test-output-handler", function (Y) {
 
             handler.done("done", {http: {headers: ["text/plain"]}});
 
-            Assert.areSame("text/plain", res.cWriteHead[1]["0"]);
-            Assert.areSame("done", res.cWrite);
-            Assert.areSame(undefined, res.cEnd);
-            Assert.areSame(true, handler.headersSent);
+            assert.equal("text/plain", res.cWriteHead[1]["0"]);
+            assert.equal("done", res.cWrite);
+            assert.equal(undefined, res.cEnd);
+            assert.equal(true, handler.headersSent);
         });
 
-        Y.it("should result in the http header test-test", function () {
+        it("should result in the http header test-test", function () {
 
             var handler,
                 req = {},
@@ -89,13 +90,13 @@ YUI.add("test-output-handler", function (Y) {
 
             handler.done("done", {http: {reasonPhrase: "test-test"}});
 
-            Assert.areSame("test-test", res.cWriteHead[1]);
-            Assert.areSame("done", res.cWrite);
-            Assert.areSame(undefined, res.cEnd);
-            Assert.areSame(true, handler.headersSent);
+            assert.equal("test-test", res.cWriteHead[1]);
+            assert.equal("done", res.cWrite);
+            assert.equal(undefined, res.cEnd);
+            assert.equal(true, handler.headersSent);
         });
 
-        Y.it("should result in the http header 404", function () {
+        it("should result in the http header 404", function () {
 
             var handler,
                 req = {},
@@ -107,13 +108,13 @@ YUI.add("test-output-handler", function (Y) {
 
             handler.done("done", {http: {code: 404}});
 
-            Assert.areSame(404, res.cWriteHead[0]);
-            Assert.areSame("done", res.cWrite);
-            Assert.areSame(undefined, res.cEnd);
-            Assert.areSame(true, handler.headersSent);
+            assert.equal(404, res.cWriteHead[0]);
+            assert.equal("done", res.cWrite);
+            assert.equal(undefined, res.cEnd);
+            assert.equal(true, handler.headersSent);
         });
 
-        Y.it("should result in the http header 404 test-test text/plain", function () {
+        it("should result in the http header 404 test-test text/plain", function () {
 
             var handler,
                 req = {},
@@ -125,13 +126,12 @@ YUI.add("test-output-handler", function (Y) {
 
             handler.done("done", {http: {code: 404, reasonPhrase: "test-test", headers: ["text/plain"]}});
 
-            Assert.areSame(404, res.cWriteHead[0]);
-            Assert.areSame("test-test", res.cWriteHead[1]);
-            Assert.areSame("text/plain", res.cWriteHead[2]["0"]);
-            Assert.areSame("done", res.cWrite);
-            Assert.areSame(undefined, res.cEnd);
-            Assert.areSame(true, handler.headersSent);
+            assert.equal(404, res.cWriteHead[0]);
+            assert.equal("test-test", res.cWriteHead[1]);
+            assert.equal("text/plain", res.cWriteHead[2]["0"]);
+            assert.equal("done", res.cWrite);
+            assert.equal(undefined, res.cEnd);
+            assert.equal(true, handler.headersSent);
         });
     });
-
-}, "0.0.1", {requires: ["test", "bdd"]});
+});

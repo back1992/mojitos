@@ -16,8 +16,8 @@
         "send": "*"
     },
     "devDependencies": {
-        "ytestrunner": "*",
-        "yui": "*"
+        "amdefine": "*",
+        "mocha": "*"
     },
     "keywords": [
         "framework",
@@ -43,6 +43,6 @@
     "bugs": "",
     "scripts": {
         "start": "./bin/mojito start",
-        "test": "ytestrunner --yui3 "
+        "test": "mocha --recursive --reporter spec"
     }
 }
