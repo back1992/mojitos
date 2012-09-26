@@ -2,7 +2,7 @@
 
 [![Build Status](https://secure.travis-ci.org/capecodehq/mojitos.png?branch=master)](http://travis-ci.org/capecodehq/mojitos)
 
-Mojitos is a JavaScript MVC framework for developing runtime agnostic applications. This code is an experimental implementation of the [Yahoo! Mojito](http://developer.yahoo.com/cocktails/mojito/) API. It is not backwards compatible with any version of Mojito.
+Mojitos is a JavaScript MVC framework for developing runtime agnostic applications. This code is an experimental implementation of the [Yahoo! Mojito](http://developer.yahoo.com/cocktails/mojito/) concept. It is not api compatible with any version of [Yahoo! Mojito](http://developer.yahoo.com/cocktails/mojito/).
 
 # Quick Start
 
@@ -48,13 +48,30 @@ The Mojitos API is designed to abstract away the runtime so you can execute the 
 * Mojits
 * Addons
 
-# API Reference (still to be tested)
+# API Reference (still to be implemented & tested)
 
-The Mojitos API is a collection of __addons__ that are accessed via the first argument of a controller function. In order to uses __addons__ they must be _required_ using the AMD require system. For example the controller below is requiring addon_a, addon_b and addon_c.
+* [api](#api)
+* [api.params](#apiparams)
+* [api.render](#apirender)
+* [api.compose](#apicompose)
+* [api.cookies](#apicookies)
+* [api.http](#apihttp)
+
+The Mojitos API is a collection of __addons__ that are accessed via the first argument of a controller function. In order to uses __addons__ they must be required using the AMD require system. For example the controller below is requiring addon_a, addon_b and addon_c.
 
     define("mojit_name", ["addon_a", "addon_b", "addon_c"], {
         index: function(api) {
             // ...
+        }
+    });
+
+Or alternatively you can __use__ them as needed;
+
+    define("mojit_name", {
+        index: function(api) {
+            api.use(["addon_a", "addon_b", "addon_c"], function () {
+                // ...
+            });
         }
     });
 
@@ -89,11 +106,89 @@ or;
 
 The __meta__ object is a bag of data that Mojitos or other __mojits__ may inspect. Anything attached to the __meta__ object is passed upstream with the data when either [api.send](#apisend) or [api.done](#apidone) is called. Upstream may mean Mojitos itself or another __mojit__ if you've used a dispatching __addon__ such as [api.composite](#apicomposite).
 
-## api.composite
+### api.use
 
-An __addon__ for composing one or __mojits__ into a single data structure or template. This __addon__ can be used for constructing pages from reusable __mojits__.
+This function loads __addons__ for use as needed.
 
-### api.composite.execute
+    define("mojit_name", {
+        index: function(api) {
+            api.use(["addon_a", "addon_b", "addon_c"], function () {
+                // ...
+            });
+        }
+    });
+
+## api.params
+
+An __addon__ for dealing with inputs.
+
+### api.params.get
+
+This function returns an input value with the lookup performed in the following order:
+
+    api.params.route();
+    api.params.body();
+    api.params.query();
+
+Calling [api.params.body](#apiparamsbody), [api.params.route](#apiparamsroute), and [api.params.query](#apiparamsquery) should be favored for clarity.
+
+### api.params.route
+
+This function contains properties mapped to the named route "parameters". For example if you have the route /user/:name, then the "name" property is available to you as api.params.route("name"). This object defaults to {}.
+
+    // GET /user/mojitos
+    api.params.route("name");
+    // => "mojitos"
+
+### api.params.query
+
+This function is an object containing the parsed query-string, defaulting to {}.
+
+    // GET /search?q=mojitos+js
+    api.params.query("q");
+    // => "mojitos js"
+
+    // GET /shoes?order=desc&shoe[color]=blue&shoe[type]=converse
+    api.params.query("order");
+    // => "desc"
+
+    api.params.query("shoe.color");
+    // => "blue"
+
+    api.params.query("shoe.type");
+    // => "converse"
+
+### api.params.body
+
+This property is an object containing the parsed request body. This feature is provided by the bodyParser() middleware, though other body parsing middleware may follow this convention as well. This property defaults to {} when bodyParser() is used.
+
+    // POST user[name]=mojitos&user[email]=mojitos@learnmojito.com
+    api.params.body("user.name");
+    // => "mojitos"
+
+    api.params.body("user.email");
+    // => "mojitos@learnmojito.com"
+
+    // POST { "name": "mojitos" }
+    api.params.body("name");
+    // => "mojitos"
+
+### api.params.files
+
+This property is an object of the files uploaded. This feature is provided by the bodyParser() middleware, though other body parsing middleware may follow this convention as well. This property defaults to {} when bodyParser() is used.
+For example if a file field was named "image", and a file was uploaded, req.files.image would contain the following File object:
+
+    { put-example-here: true }
+
+## api.render
+
+TODO
+
+## api.compose
+
+An __addon__ for composing one or more __mojits__ into a single data structure or template. This __addon__ can be used for constructing pages from reusable __mojits__.
+
+### api.compose.execute
 
 TODO
 
@@ -206,72 +301,6 @@ yields:
     Link: <http://api.example.com/users?page=2>; rel="next", 
           <http://api.example.com/users?page=5>; rel="last"
 
-## api.params
-
-An __addon__ for dealing with inputs.
-
-### api.params.get
-
-This function returns an input value with the lookup performed in the following order:
-
-    api.params.route();
-    api.params.body();
-    api.params.query();
-
-Calling [api.params.body](#apiparamsbody), [api.params.route](#apiparamsroute), and [api.params.query](#apiparamsquery) should be favored for clarity.
-
-### api.params.route
-
-This function contains properties mapped to the named route "parameters". For example if you have the route /user/:name, then the "name" property is available to you as api.params.route("name"). This object defaults to {}.
-
-    // GET /user/mojitos
-    api.params.route("name");
-    // => "mojitos"
-
-### api.params.query
-
-This function is an object containing the parsed query-string, defaulting to {}.
-
-    // GET /search?q=mojitos+js
-    api.params.query("q");
-    // => "mojitos js"
-
-    // GET /shoes?order=desc&shoe[color]=blue&shoe[type]=converse
-    api.params.query("order");
-    // => "desc"
-
-    api.params.query("shoe.color");
-    // => "blue"
-
-    api.params.query("shoe.type");
-    // => "converse"
-
-### api.params.body
-
-This property is an object containing the parsed request body. This feature is provided by the bodyParser() middleware, though other body parsing middleware may follow this convention as well. This property defaults to {} when bodyParser() is used.
-
-    // POST user[name]=mojitos&user[email]=mojitos@learnboost.com
-    api.params.body("user.name");
-    // => "mojitos"
-
-    api.params.body("user.email");
-    // => "mojitos@learnboost.com"
-
-    // POST { "name": "mojitos" }
-    api.params.body("name");
-    // => "mojitos"
-
-### api.params.files
-
-This property is an object of the files uploaded. This feature is provided by the bodyParser() middleware, though other body parsing middleware may follow this convention as well. This property defaults to {} when bodyParser() is used.
-For example if a file field was named "image", and a file was uploaded, req.files.image would contain the following File object:
-
-    { put-example-here: true }
-
-## api.render
-
-TODO
-
 ## Mojit
 
 A Mojit is a collection of AMD Modules. Mojits use folders in predefined locations to group ".js" files and infer relationships between them.
@@ -305,7 +334,7 @@ The assets folder can contain any number of files and folders of any file type a
 
 ### controller
 
-The key concept Mojitos uses to serve pages is what it calls a controller. A controller has a one-to-one mapping to a URI. For example the URI "http://localhost:3000/@mojito_name/index" would execute the function "index" in the AMD module below (assuming the module file was found at _./mojits/mojit_name/controller.common.js_).
+The key concept Mojitos uses to serve pages is what it calls a controller. A controller has a one-to-one mapping to a URI. For example the URI "http://localhost:3000/@mojito\_name/index" informs Mojitos to; load the module found at __mojit\_name__ and call the funciton __index__ (assuming the module file was found at _./mojits/mojit_name/controller.common.js_).
 
     define("mojit_name", {
         index: function(api) {
