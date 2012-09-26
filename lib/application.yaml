@@ -48,7 +48,7 @@
     # The middleware to use and the order it should be loaded in.
     middleware:
         - favicon
-        - logger
+        #- logger
         - static
         - query
         #- bodyParser # this should be done in an addon (currently in query)

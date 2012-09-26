@@ -1,0 +1,25 @@
+. ~/.bashrc
+nvm use 0.8
+./bin/mojito start -r ./examples/composite &
+
+sleep 5
+
+curl "http://127.0.0.1:3000/@master/index?foo=bar&baz=qux"
+
+sleep 5
+
+ab -n 1000 -c 10 -r "http://127.0.0.1:3000/@master/index?foo=bar&baz=qux"
+
+sleep 5
+
+ab -n 1000 -c 10 -r "http://127.0.0.1:3000/@master/index?foo=bar&baz=qux" > ./examples/composite/lastrun.txt
+
+sleep 5
+
+declare -a pids
+pids=`ps aguwx | grep [n]ode | awk '{print $2}' | xargs`
+for thisPid in "${pids[@]:0}"
+do
+	printf "killing $thisPid \n"
+	kill -9 $thisPid
+done;

@@ -27,7 +27,7 @@ var express = require("express");
 
 var app = express()
     .use(express.favicon()) // mimic fav icon
-    .use(express.logger('dev')) // mimic request logging
+    // .use(express.logger('dev')) // mimic request logging
     .use(express.static('public')) // mimic user files
     .use(express.query()) // mimic URL processing
     .use(express.bodyParser())
