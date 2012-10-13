@@ -1,43 +1,23 @@
-This is ApacheBench, Version 2.3 <$Revision: 1178079 $>
-Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
-Licensed to The Apache Software Foundation, http://www.apache.org/
+httperf --client=0/1 --server=localhost --port=3000 --uri=/@simple/index?foo=bar&baz=qux --send-buffer=4096 --recv-buffer=16384 --num-conns=1 --num-calls=1000
+Maximum connect burst length: 0
 
-Benchmarking 127.0.0.1 (be patient)
+Total: connections 1 requests 1000 replies 1000 test-duration 0.831 s
 
+Connection rate: 1.2 conn/s (831.3 ms/conn, <=1 concurrent connections)
+Connection time [ms]: min 831.3 avg 831.3 max 831.3 median 831.5 stddev 0.0
+Connection time [ms]: connect 0.4
+Connection length [replies/conn]: 1000.000
 
-Server Software:        
-Server Hostname:        127.0.0.1
-Server Port:            3000
+Request rate: 1203.0 req/s (0.8 ms/req)
+Request size [B]: 91.0
 
-Document Path:          /@simple/index?foo=bar&baz=qux
-Document Length:        12 bytes
+Reply rate [replies/s]: min 0.0 avg 0.0 max 0.0 stddev 0.0 (0 samples)
+Reply time [ms]: response 0.8 transfer 0.0
+Reply size [B]: header 163.0 content 12.0 footer 0.0 (total 175.0)
+Reply status: 1xx=0 2xx=1000 3xx=0 4xx=0 5xx=0
 
-Concurrency Level:      100
-Time taken for tests:   0.663 seconds
-Complete requests:      1000
-Failed requests:        0
-Write errors:           0
-Total transferred:      170000 bytes
-HTML transferred:       12000 bytes
-Requests per second:    1508.32 [#/sec] (mean)
-Time per request:       66.299 [ms] (mean)
-Time per request:       0.663 [ms] (mean, across all concurrent requests)
-Transfer rate:          250.40 [Kbytes/sec] received
+CPU time [s]: user 0.12 system 0.66 (user 14.1% system 79.9% total 94.0%)
+Net I/O: 312.5 KB/s (2.6*10^6 bps)
 
-Connection Times (ms)
-              min  mean[+/-sd] median   max
-Connect:        0    7   4.2      6      18
-Processing:     4   57  16.2     60      90
-Waiting:        4   40  16.1     41      87
-Total:         19   64  15.4     66      99
-
-Percentage of the requests served within a certain time (ms)
-  50%     66
-  66%     69
-  75%     72
-  80%     75
-  90%     83
-  95%     92
-  98%     95
-  99%     97
- 100%     99 (longest request)
+Errors: total 0 client-timo 0 socket-timo 0 connrefused 0 connreset 0
+Errors: fd-unavail 0 addrunavail 0 ftab-full 0 other 0

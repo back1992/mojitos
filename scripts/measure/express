@@ -4,11 +4,11 @@ node ./measure/express/helloworld.js &
 
 sleep 5
 
-ab -n 1000 -c 100 -r "http://127.0.0.1:3000/@simple/index?foo=bar&baz=qux" > ./measure/express/lastrun.txt
+httperf --server=localhost --port=3000 --uri="/@simple/index?foo=bar&baz=qux" --num-conns=1 --num-calls=1000
 
 sleep 5
 
-ab -n 1000 -c 100 -r "http://127.0.0.1:3000/@simple/index?foo=bar&baz=qux" > ./measure/express/lastrun.txt
+httperf --server=localhost --port=3000 --uri="/@simple/index?foo=bar&baz=qux" --num-conns=1 --num-calls=1000 > ./measure/express/lastrun.txt
 
 sleep 5
 
