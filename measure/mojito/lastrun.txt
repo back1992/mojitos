@@ -1,14 +1,14 @@
 httperf --client=0/1 --server=localhost --port=3000 --uri=/@simple/index?foo=bar&baz=qux --send-buffer=4096 --recv-buffer=16384 --num-conns=1 --num-calls=1000
 Maximum connect burst length: 0
 
-Total: connections 1 requests 1000 replies 1000 test-duration 0.744 s
+Total: connections 1 requests 1000 replies 1000 test-duration 0.716 s
 
-Connection rate: 1.3 conn/s (744.3 ms/conn, <=1 concurrent connections)
-Connection time [ms]: min 744.3 avg 744.3 max 744.3 median 744.5 stddev 0.0
-Connection time [ms]: connect 0.4
+Connection rate: 1.4 conn/s (716.3 ms/conn, <=1 concurrent connections)
+Connection time [ms]: min 716.3 avg 716.3 max 716.3 median 716.5 stddev 0.0
+Connection time [ms]: connect 0.2
 Connection length [replies/conn]: 1000.000
 
-Request rate: 1343.5 req/s (0.7 ms/req)
+Request rate: 1396.1 req/s (0.7 ms/req)
 Request size [B]: 91.0
 
 Reply rate [replies/s]: min 0.0 avg 0.0 max 0.0 stddev 0.0 (0 samples)
@@ -16,8 +16,8 @@ Reply time [ms]: response 0.7 transfer 0.1
 Reply size [B]: header 108.0 content 12.0 footer 2.0 (total 122.0)
 Reply status: 1xx=0 2xx=1000 3xx=0 4xx=0 5xx=0
 
-CPU time [s]: user 0.10 system 0.59 (user 14.0% system 79.8% total 93.8%)
-Net I/O: 276.8 KB/s (2.3*10^6 bps)
+CPU time [s]: user 0.10 system 0.53 (user 13.6% system 74.5% total 88.1%)
+Net I/O: 287.7 KB/s (2.4*10^6 bps)
 
 Errors: total 0 client-timo 0 socket-timo 0 connrefused 0 connreset 0
 Errors: fd-unavail 0 addrunavail 0 ftab-full 0 other 0

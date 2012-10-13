@@ -8,11 +8,11 @@ curl "http://127.0.0.1:3000/@master/index?foo=bar&baz=qux"
 
 sleep 5
 
-httperf --server=localhost --port=3000 --uri="/@master/index?foo=bar&baz=qux" --num-conns=1 --num-calls=1000
+httperf --server=localhost --port=3000 --uri="/@master/index?foo=bar&baz=qux" --num-conns=1 --num-calls=200
 
 sleep 5
 
-httperf --server=localhost --port=3000 --uri="/@master/index?foo=bar&baz=qux" --num-conns=1 --num-calls=1000 > ./examples/composite/lastrun.txt
+httperf --server=localhost --port=3000 --uri="/@master/index?foo=bar&baz=qux" --num-conns=1 --num-calls=200 > ./examples/composite/lastrun.txt
 
 sleep 5
 
